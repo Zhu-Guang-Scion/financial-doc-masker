@@ -1,0 +1,30 @@
+# 财税文档脱敏工具（本地离线版）—— 全部为可选依赖，按需安装即可
+# 安装：pip install -r requirements.txt
+
+jieba             # v1.3 人名词边界交叉校验（纯 Python）
+
+# ---- 核心格式支持（建议安装）----
+pymupdf          # PDF 双链路处理（链路A 原生文本遮罩必需）
+python-docx      # Word .docx 处理
+openpyxl         # Excel .xlsx 处理（.xls 备用链路写出也需要）
+python-pptx      # PPT .pptx 处理
+xlrd             # 老版 .xls 备用读取（无 Excel/WPS COM 时的降级方案）
+
+# ---- OCR / 图像（默认 CPU 引擎，建议安装）----
+# v2.1.4：exe 内置默认引擎=PP-OCRv6-ONNX-small(CPU)，源码版按此清单即与 exe 同能力
+rapidocr-onnxruntime  # PP-OCRv6 ONNX 推理封装（默认 OCR 引擎链）
+onnxruntime           # ONNX 推理后端
+Pillow                # 图像解码（OCR/印章检测输入）
+opencv-python         # 红色印章检测 / OCR 图像解码
+numpy<1.25            # 兼容 Anaconda 自带 numba/scipy；onnxruntime 1.20 兼容 1.24
+
+# ---- 外部 Paddle 引擎（可选，高级）----
+# 注意：paddlepaddle 建议固定 3.0.0（3.3.1 在部分 Windows CPU 上有大图原生崩溃问题）；
+#       paddleocr 3.7 首次初始化会下载 PP-OCRv5 模型到用户缓存，之后可完全离线运行。
+# GPU 加速（可选）：有 NVIDIA 显卡时卸载 CPU 版后安装 GPU 版，见 README「OCR 加速」章节。
+paddlepaddle==3.0.0   # PaddleOCR 运行后端（外部 v5 引擎，非默认）
+paddleocr             # PP-OCRv5 外部引擎
+
+# ---- Windows 桌面增强（可选）----
+pywin32          # .xls 调用本机 Excel / WPS（COM，保留原格式输出）
+tkinterdnd2      # 文件/文件夹拖拽导入

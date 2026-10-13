@@ -1,0 +1,7 @@
+{
+  "brands": ["云舒雅家居股份有限公司", "云舒雅", "慕蓝朵", "司南", "云住良材"],
+  "aliases": [],
+  "domain_hints": ["example-brand.example"],
+  "org_suffixes": [],
+  "org_suffixes_remove": []
+}

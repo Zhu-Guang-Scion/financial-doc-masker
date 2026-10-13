@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+build/
+dist/
+cache/
+_cache/
+config.json
+brands.json
+误报样本.csv
+*.log
